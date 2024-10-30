@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "start": "vite"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,3 @@
     "vite": "^5.2.0"
   }
 }
-
-
