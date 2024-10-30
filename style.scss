@@ -1,0 +1,251 @@
+:root {
+  --app-width-desktop: 600px;
+  --app-width-mobile: 400px;
+  --font-size-medium: 1.6rem;
+  --font-size-regular: 1.8rem;
+  --font-size-xLarge: 3.2rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --default-padding: 1.6rem;
+  --border-width-small: 0.1rem;
+  --border-width-large: 0.2rem;
+  --border-radius-small: 0.5rem;
+  --border-radius-rounded: 50%;
+  --font-family: "Josefin Sans", sans-serif;
+  --timing-animation: 0.2s;
+  // Light Theme
+  --color-bg-light: hsl(0, 0%, 98%);
+  --color-taskBox-light: white;
+  --color-border-light: hsl(236, 33%, 92%);
+  --color-isCompleted-light: hsl(233, 11%, 84%);
+  --color-placeHolder-options-light: hsl(236, 9%, 61%);
+  --color-task-light: hsl(235, 19%, 35%);
+  --bg-Image-Light: url("images/bg-desktop-light.jpg");
+  // End Light Theme
+
+  // Dark Theme
+  --color-bg-dark: hsl(235, 21%, 11%);
+  --color-taskBox-dark: hsl(235, 24%, 19%);
+  --color-border-dark: hsl(237, 14%, 26%);
+  --color-isCompleted-dark: hsl(233, 14%, 35%);
+  --color-placeHolder-options-dark: hsl(234, 11%, 52%);
+  --color-task-dark: hsl(234, 39%, 85%);
+  --bg-Image-dark: url("images/bg-desktop-dark.jpg");
+
+  // End Dark Theme
+  --color-white: white;
+  --color-Bright-Blue: hsl(220, 98%, 61%);
+  --color-Check-Background: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  --bg-Size-Desktop: 100vw 40vh;
+}
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  margin: 0;
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
+  background-color: var(--color-bg-light);
+  background-image: var(--bg-Image-Light);
+  background-size: var(--bg-Size-Desktop);
+  background-repeat: no-repeat;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Global Styles
+.container {
+  display: flex;
+  justify-content: center;
+}
+.app {
+  position: absolute;
+  margin: calc(var(--default-padding) * 2);
+  width: var(--app-width-desktop);
+
+  @media screen and (max-width: 700px) {
+    width: var(--app-width-mobile);
+  }
+
+  &-isDark {
+    --color-bg-light: var(--color-bg-dark);
+    --color-taskBox-light: var(--color-taskBox-dark);
+    --color-border-light: var(--color-border-dark);
+    --color-isCompleted-light: var(--color-isCompleted-dark);
+    --color-placeHolder-options-light: var(--color-placeHolder-options-dark);
+    --color-task-light: var(--color-task-dark);
+    --bg-Image-Light: var(--bg-Image-dark);
+  }
+}
+
+.textBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__task {
+    width: 100%;
+    color: var(--color-task-light);
+    background-color: var(--color-taskBox-light);
+    padding: var(--default-padding) calc(var(--default-padding) * 4);
+    border: none;
+    border-radius: var(--border-radius-small);
+    outline: none;
+    font-size: var(--font-size-regular);
+  }
+
+  &__button {
+    position: absolute;
+
+    left: var(--default-padding);
+    border-radius: var(--border-radius-rounded);
+    width: calc(var(--default-padding) * 1.5);
+    height: calc(var(--default-padding) * 1.5);
+    cursor: pointer;
+    border: var(--border-width-large) var(--color-border-light) solid;
+    background-color: var(--color-taskBox-light);
+
+    background-position: center;
+    transition: var(--timing-animation);
+    &:hover {
+      background: url("images/icon-check.svg"), var(--color-Check-Background);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      border: none;
+    }
+  }
+}
+// End Global Styles
+
+// Header
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(var(--default-padding) * 2);
+  &__title {
+    font-size: var(--font-size-xLarge);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+  }
+  &__themeToggle__icon {
+    cursor: pointer;
+    &-light {
+      display: none;
+    }
+  }
+}
+// End Header
+
+// Add Task
+.addTask {
+  margin: calc(var(--default-padding) * 2) 0 calc(var(--default-padding) * 1.5);
+  &__input {
+    &::placeholder {
+      font-size: var(--font-size-regular);
+      color: var(--color-placeHolder-options-light);
+    }
+  }
+}
+// End Add Task
+
+// ToDo
+.todo {
+  background-color: var(--color-taskBox-light);
+  border-radius: var(--border-radius-small);
+
+  &__list {
+    &__task {
+      border-bottom: var(--border-width-small) var(--color-border-light) solid;
+      cursor: pointer;
+
+      &-hidden {
+        display: none;
+      }
+
+      &-isCompleted &__button {
+        background: url("images/icon-check.svg"), var(--color-Check-Background);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+      }
+      &-isCompleted &__content {
+        color: var(--color-isCompleted-light);
+        text-decoration: line-through;
+      }
+
+      &:hover &__deleteButton {
+        display: inline-block;
+      }
+      &__deleteButton {
+        position: absolute;
+        border: none;
+        top: var(--default-padding);
+        right: var(--default-padding);
+        cursor: pointer;
+        background-color: var(--color-taskBox-light);
+        display: none;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--default-padding);
+    color: var(--color-placeHolder-options-light);
+    font-size: var(--font-size-medium);
+
+    &-sm {
+      @media screen and (max-width: 700px) {
+        margin-top: var(--default-padding);
+        display: flex;
+        justify-content: center;
+      }
+      @media screen and (min-width: 701px) {
+        display: none;
+      }
+    }
+
+    &__filters {
+      display: flex;
+      gap: var(--default-padding);
+
+      &-lg {
+        @media screen and (max-width: 700px) {
+          display: none;
+        }
+      }
+    }
+
+    &__filter {
+      &-isActive {
+        color: var(--color-Bright-Blue);
+      }
+    }
+  }
+}

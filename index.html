@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.scss" />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body class="app-isDark">
+    <div class="container">
+      <main class="app">
+        <header class="header">
+          <div class="header__title">T O D O</div>
+          <div class="header__themeToggle">
+            <img class="header__themeToggle__icon" alt="theme icon" />
+          </div>
+        </header>
+        <form class="textBox addTask">
+          <input
+            class="textBox__task addTask__input"
+            type="text"
+            placeholder="Create a new todo"
+          />
+          <button
+            class="textBox__button addTask__button"
+            type="submit"
+            name="add"
+          ></button>
+        </form>
+        <div class="todo">
+          <ul class="todo__list"></ul>
+          <div class="textBox__task todo__options">
+            <div class="todo__options__tasksLeft">No Tasks</div>
+            <ul class="todo__options__filters todo__options__filters-lg">
+              <a
+                id="allTasks"
+                class="todo__options__filter todo__options__filter-isActive"
+                href="#"
+                >All</a
+              >
+              <a id="activeTasks" class="todo__options__filter" href="#"
+                >Active</a
+              >
+              <a id="completedTasks" class="todo__options__filter" href="#"
+                >Completed</a
+              >
+            </ul>
+            <a href="#" class="todo__options__clearCompleted"
+              >Clear Completed</a
+            >
+          </div>
+        </div>
+        <div class="textBox__task todo__options todo__options-sm">
+          <ul class="todo__options__filters">
+            <a
+              id="allTasks"
+              class="todo__options__filter todo__options__filter-isActive"
+              href="#"
+              >All</a
+            >
+            <a id="activeTasks" class="todo__options__filter" href="#"
+              >Active</a
+            >
+            <a id="completedTasks" class="todo__options__filter" href="#"
+              >Completed</a
+            >
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
+
+<!-- <div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  Coded by <a href="#">Your Name Here</a>.
+</div> -->
